@@ -5,7 +5,7 @@
 #     original //= 10
 # else:
 #     print('original = ', original, ', Пожалуй')
-#     print('\bхватит )')
+#     print('хватит )')
 # print(inverted)
 
 # a, b, c = 1, 2, 3
