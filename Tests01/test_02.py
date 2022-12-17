@@ -20,13 +20,15 @@ data = [
 # пишем название колонок в две строчки
 columns = [['Марка', 'Модель', 'Год', 'Цена', 'Пробег'],
            ['автомобиля', '', 'выпуска', ' $', 'км']]
+file_name = 'tab_test.txt'
 
 
-def print_table(data, columns, indent, max_width=100):
+def write_table(file_name, data, columns, indent, max_width=100):
+    # file_name — название текстового файла
     # data — список списков, данные таблицы
     # columns — список списков, названия колонок таблицы
     # indent — отступ от края колонки
-    # max_widt – допустимая ширина таблицы
+    # max_widt — допустимая ширина таблицы
     # max_columns — список максимальной длинны строки колонок
     # max_columns_title — список максимальной ширины колонок шапки
     # width — список ширины каждой колонки таблицы для печати
@@ -43,35 +45,28 @@ def print_table(data, columns, indent, max_width=100):
     for col in zip(*columns):
         max_columns_title.append(max([len(el) for el in col]))
 
-    # печать таблицы
-    for col in columns:
-        width = []
-        for n, c in enumerate(col):
+    # запись таблицы
+    with open(file_name, 'w', encoding='utf-8') as f:
+        for col in columns:
+            width = []
+            for n, c in enumerate(col):
 
-            # сравниваем максимальную колонку шапки с макс колонкой таблицы
-            if max_columns[n] >= max_columns_title[n]:
-                w = max_columns[n] + indent
-                width.append(w)
-            else:
-                w = max_columns_title[n] + indent
-                width.append(w)
+                # сравниваем максимальную колонку шапки с макс колонкой таблицы
+                if max_columns[n] >= max_columns_title[n]:
+                    w = max_columns[n] + indent
+                    width.append(w)
+                else:
+                    w = max_columns_title[n] + indent
+                    width.append(w)
 
-            # пишем название колонок в две строки
-            if sum(width) <= max_width:
-                print(f'{c:^{w}}', end='')  # выравниване по ценру
-            else:
-                print('Ширина таблицы больше допустимого значения')
-                return
-        print()
-
-    # печать разделителя шапки '='
-    print(f"{'='*(sum(width))}")
-
-    # печать тела таблицы
-    for el in data:
-        for n, col in enumerate(el):
-            print(f'{col:>{width[n]}}', end='')  # выравнвание по правому краю
-        print()
+                # пишем название колонок в две строки
+                if sum(width) <= max_width:
+                    f.write(f'{c:^{w}}')
+                else:
+                    print('Ширина таблицы больше допустимого значения')
+                    return
+            f.write('\n')
 
 
-print_table(data, columns, 1, max_width=100)
+# вызов функции
+write_table(file_name, data, columns, 1, max_width=100)
