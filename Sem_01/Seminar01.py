@@ -1,4 +1,8 @@
 
+import msvcrt
+import os
+
+
 def task01():
     """ Задача 1. Напишите программу, которая принимает на вход цифру, обозначающую день недели, и выводит название этого дня недели."""
     nameDaysWeek = [
@@ -64,7 +68,22 @@ def task04():
             print(a, end=strEnd)
 
 
-# task01()
-# task02()
-# task03()
-# task04()
+check = True
+while check:
+    os.system('clear')
+    numTask = int(input('Номер задачи 1-4 :'))
+    if numTask >= 1 and numTask <= 4:
+        match numTask:
+            case 1:
+                task01()
+            case 2:
+                task02()
+            case 3:
+                task03()
+            case 4:
+                task04()
+
+    print('\n\nЗавершить - клавиша enter, \nпродолжить - любая')
+    c = bytes(msvcrt.getch())
+    if c == b'\r':
+        check = False
