@@ -1,6 +1,6 @@
 
-import msvcrt
 import os
+import msvcrt
 
 
 def task01():
@@ -58,14 +58,12 @@ def task04():
     print('\nВывод четных чисел от 1 до N')
     userInput = int(input('Введите число N : '))
     stop = userInput+1
+    res = []
     print(f'{userInput} ', end='-> ')
     for a in range(1, stop):
         if a % 2 == 0:
-            if a == userInput or a == userInput-1:
-                strEnd = ''
-            else:
-                strEnd = ', '
-            print(a, end=strEnd)
+            res.append(str(a))
+    print(','.join(res))
 
 
 check = True
