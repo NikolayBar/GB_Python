@@ -30,21 +30,25 @@ def task02():
 def task03():
     ''' 
     Задача 3. Даны две строки. Посчитайте сколько раз каждый символ первой строки 
-    встречается во второй «one» «onetwonine» - o – 2, n – 3, e – 2'''
+    встречается во второй «one» «onetwonine» - o - 2, n - 3, e - 2'''
 
-    baseStr = 'one'
-    strOne = list(set(baseStr))
-    strTwo = 'onetwonine'
+    baseStr = 'onem'
+    strTwo = 'onetwoninem'
+    strOne = set(baseStr)
 
     result = []
-    for i in range(len(strOne)):
+    for i in strOne:
         count = 0
-        for j in range(len(strTwo)):
-            if strOne[i] == strTwo[j]:
+        for j in strTwo:
+            if i == j:
                 count += 1
-        result.append(f' {strOne[i]} - {count} ')
+                b = 'раза' if count % 10 >= 2 and count % 10 <= 4 else 'раз'
+        result.append(f' {i} - {count} {b}')
     print(
-        f'Символы из строки "{baseStr}" в строке "{strTwo}" встречаются:\n {result}')
+        f'Символы из строки \t"{baseStr}" \nвстречаются в строке \t"{strTwo}":')
+
+    for findSym in result:
+        print(f'{findSym}')
 
 
 def task04():
