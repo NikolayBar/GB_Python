@@ -37,6 +37,7 @@ def task03():
     strOne = set(baseStr)
 
     result = []
+
     for i in strOne:
         count = 0
         for j in strTwo:
@@ -81,5 +82,5 @@ os.system('clear')
 
 # task01()
 # task02()
-task03()
-# task04()
+# task03()
+task04()
