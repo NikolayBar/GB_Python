@@ -68,6 +68,26 @@ def task05():
     F-1 = 1
     F-2 = -1
     Fn = F(n+2)-F(n+1)'''
+    def fib(n):
+        # алгоритм найден в сети
+        if n >= 0:
+            index = range(n+1)
+            x = [0, 1]
+            for k in index[2:]:
+                x.append(x[k-1] + x[k-2])
+            return x[n]
+        else:
+            n = -(n-1)
+            index = range(n+1)
+            x = [1, 0]
+            for k in index[2:]:
+                x.append(x[k-2] - x[k-1])
+            x.reverse()
+        return x[0]
+    res = []
+    for i in range(-8, 9):
+        res.append(fib(i))
+    print(*res)
 
 
 # task01()
