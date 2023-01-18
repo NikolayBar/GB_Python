@@ -1,4 +1,5 @@
 import os
+from datetime import date as dt
 os.system('clear')
 
 
@@ -40,9 +41,29 @@ def task02():
 
 def task03():
     '''Задача 3. Создайте скрипт бота, который находит ответы на фразы по ключу в словаре. Бот должен, как минимум, отвечать на фразы «привет», «как тебя зовут». Если фраза ему неизвестна, он выводит соответствующую фразу.'''
-    print()
+    print(dt.today())
+    bot_name = 'HW-003'
+    dic_bot = {'привет': 'Здрасте!',
+               'как тебя зовут': f'Меня зовут {bot_name}-й.',
+               'какое сегодня число': f'Сегодня {dt.today()}',
+               'что ты умеешь': 'Пока очень мало.'
+               }
+    bSymb = ('?', '.', '!', ',')
+    flag = True
+    while flag:
+        user_in = input(' >:')
+        if user_in != "":
+
+            answ = dic_bot.get(user_in.lower())
+            if answ != None:
+                print(answ)
+            else:
+                print(f'Не понял, это про что -"{user_in}"?')
+        else:
+            flag = False
+    print('Пока!')
 
 
 # task01()
-task02()
+# task02()
 # task03()
