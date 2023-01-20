@@ -1,9 +1,18 @@
 import os
+from math import pi
 os.system('clear')
 
 
 def start_task():
-    select = input('Select task Sem_04 (1-4) >: ')
+    decription = [
+        '1. Список простых множителей числа',
+        '2. Найти закончившееся мороженое',
+        '3. Задать точность числа π',
+        '4. Найти сумму многочленов'
+    ]
+    for _ in decription:
+        print(_)
+    select = input('\nВыбрать задачу (1-4) >: ')
     match select:
         case '1':
             task01()
@@ -37,7 +46,8 @@ def task02():
 def task03():
     '''Выведите число π с заданной точностью. Точность выводится в виде десятичной дроби.
     3 -> 3.142'''
-    pass
+    num_decimal = int(input('Число знаков десятичной дроби числа π >: '))
+    print(round(pi, num_decimal))
 
 
 def task04():
