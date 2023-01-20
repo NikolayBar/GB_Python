@@ -1,6 +1,7 @@
 import os
 from math import pi
-os.system('clear')
+# os.system('clear')
+clscr = os.system('clear')
 
 
 def start_task():
@@ -29,7 +30,25 @@ def start_task():
 def task01():
     '''Задайте натуральное число N. Напишите программу, которая составит 
     список простых множителей числа N. 60 -> 2, 2, 3, 5'''
-    pass
+    def p_num(num):
+        k = 0
+        for x in range(2, num//2):
+            if num % x == 0:
+                k += 1
+        return True if k == 0 else False
+    print('Задача № 1')
+    num = int(input('Задайте натуральное число >:'))
+    result = []
+    tst = num
+    k = 2
+    while tst > 1:
+        if tst % k == 0 and p_num(k):
+            result.append(k)
+            tst /= k
+        else:
+            k += 1
+
+    print(*result)
 
 
 def task02():
@@ -40,12 +59,14 @@ def task02():
     1 строка файла. «Сливочное», «Бурёнка», «Вафелька», «Сладкоежка»
     2 строка файла. «Сливочное», «Вафелька», «Сладкоежка»
     Ответ. Закончилось: «Бурёнка»'''
+    print('Задача № 2')
     pass
 
 
 def task03():
     '''Выведите число π с заданной точностью. Точность выводится в виде десятичной дроби.
     3 -> 3.142'''
+    print('Задача № 3')
     num_decimal = int(input('Число знаков десятичной дроби числа π >: '))
     print(round(pi, num_decimal))
 
@@ -56,6 +77,7 @@ def task04():
     1. 5x^2 + 3x
     2. 2. 3x^2 + x + 8
     3. Результат: 8x^2 + 4x + 8'''
+    print('Задача № 4')
     pass
 
 
