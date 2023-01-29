@@ -1,6 +1,6 @@
 import os
 import random as r
-os.system('clear')
+os.system('cls')
 
 
 def start_task():
