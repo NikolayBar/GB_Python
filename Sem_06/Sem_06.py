@@ -1,7 +1,7 @@
 import os
 import random as r
 from math import gcd
-os.system('clear')
+os.system('cls')
 
 
 def start_task():

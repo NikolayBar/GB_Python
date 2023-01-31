@@ -1,12 +1,29 @@
-# Задача 1. Дано натуральное число N. Найдите значение выражения: N + NN + NNN
-# N может быть любой длины.
-# N = 132: 132 + 132132 + 132132132 = 132264396
+def task01():
+    number = [
+        [1,20,3,5],
+        [0,63,8,44],
+        [3,51,7,99]
+        ]
+    num_uni =[]
+    for i in number:
+        num_uni += i
+    number = sorted(list(set(num_uni)))
+    print(number)
+    print(number[1],number[-2])
+    print(f'{number[-2]} - {number[1]} = {number[-2]-number[1]}')
 
-user_in = input('натуральное число N ->:')
-rep_num = 3
-num_lst = []
-for i in range(1, rep_num+1):
-    num_lst.append(int(user_in*i))
+number = [
+    [1,20,3,5],
+    [0,63,8,44],
+    [3,51,7,99]
+    ]
+res=[]
+max_num = max(number)
+for i in range(len(number)):
+    for j in number[i]:
+        # if number[i][j] == max_num:
+        print (j, ' ',max_num)
 
-print(*num_lst, sep=' + ', end=' = ')
-print(sum(num_lst))
+print(res)
+
+    
