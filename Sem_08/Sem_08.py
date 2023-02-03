@@ -56,7 +56,7 @@ def task02():
     matrx =[]
     sum_row =[]
     for _ in range(N):
-        sum_diag =[ ri(1,9) for x in range(N)]
+        sum_diag =[ ri(10,99) for x in range(N)]
         matrx.append(sum_diag)
 
     print_list(matrx)
