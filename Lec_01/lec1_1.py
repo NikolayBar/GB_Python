@@ -1,29 +1,27 @@
-def task01():
-    number = [
-        [1,20,3,5],
-        [0,63,8,44],
-        [3,51,7,99]
-        ]
-    num_uni =[]
-    for i in number:
-        num_uni += i
-    number = sorted(list(set(num_uni)))
-    print(number)
-    print(number[1],number[-2])
-    print(f'{number[-2]} - {number[1]} = {number[-2]-number[1]}')
+import telebot
+from random import randint as ri
 
-number = [
-    [1,20,3,5],
-    [0,63,8,44],
-    [3,51,7,99]
-    ]
-res=[]
-max_num = max(number)
-for i in range(len(number)):
-    for j in number[i]:
-        # if number[i][j] == max_num:
-        print (j, ' ',max_num)
 
-print(res)
+data = open('TokenText.txt', mode='r', encoding='utf-8')
+API_TOKEN = data.read()
+data.close
+game = False
+hiden_num = 0
+bot = telebot.TeleBot(API_TOKEN, parse_mode=None)
+
+# Handles all text messages that contains the commands '/start' or '/help'
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+	bot.reply_to(message, f"Привет, {message.from_user.first_name}")
+
+@bot.message_handler(content_types=['text'])
+def log_chat(message):
+    data = open('message_log.txt', 'a', encoding='utf-8')
+    text = f'{message.from_user.id} {message.from_user.first_name} {message.from_user.last_name}: {message.text}\n'
+    data.writelines(text)
+    data.close
+
+
+bot.infinity_polling()
 
     
