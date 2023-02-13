@@ -1,27 +1,32 @@
-import telebot
-from random import randint as ri
+import numpy as np
+import matplotlib.pyplot as plt
 
 
-data = open('TokenText.txt', mode='r', encoding='utf-8')
-API_TOKEN = data.read()
-data.close
-game = False
-hiden_num = 0
-bot = telebot.TeleBot(API_TOKEN, parse_mode=None)
+def task01():
+    A = [1743, 1648, 1650, 1622, 1581, 1490]
+    B = [743, 648, 711, 780, 805, 846]
+    delta_A = [A[i+1]-A[i] for i in range(len(A)-1)]
+    mean_A = sum(delta_A)/len(delta_A)
 
-# Handles all text messages that contains the commands '/start' or '/help'
-@bot.message_handler(commands=['start', 'help'])
-def send_welcome(message):
-	bot.reply_to(message, f"Привет, {message.from_user.first_name}")
+    delta_B = []
+    mean_B = 0
 
-@bot.message_handler(content_types=['text'])
-def log_chat(message):
-    data = open('message_log.txt', 'a', encoding='utf-8')
-    text = f'{message.from_user.id} {message.from_user.first_name} {message.from_user.last_name}: {message.text}\n'
-    data.writelines(text)
-    data.close
+    delta_B = [B[i+1]-B[i] for i in range(len(B)-1)]
+    mean_B = sum(delta_B)/len(delta_B)
 
+    for _ in range(10):
+        A.append(A[-1]+mean_A)
+        B.append(B[-1]+mean_B)
+    # print(A)
+    plt.plot(A)
+    plt.plot(B)
+    plt.show()
 
-bot.infinity_polling()
+def task02():
+    x = np.arange(0, 5, 0.1)
+    y = np.sin(x)
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    plt.show()
 
-    
+task02()
