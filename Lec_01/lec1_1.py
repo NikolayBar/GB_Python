@@ -29,4 +29,21 @@ def task02():
     ax.plot(x, y)
     plt.show()
 
-task02()
+
+def task_12_01():
+    a=[56, 37, 48, 45, 46, 43, 41, 45, 47, 48, 57, 63]
+    b=[66, 46, 46, 54, 57, 51, 52, 54, 57, 54, 68, 72]
+    c=[89, 67, 65, 77, 79, 68, 74, 75, 77, 77, 91, 96]
+
+    matrix = [a,b,c]
+    result = np.corrcoef(matrix)
+
+    print(result)
+    plt.plot(a,'r')
+    plt.plot(b,'g')
+    plt.plot(c,'b')
+
+    plt.show()
+
+
+# task_12_01()
