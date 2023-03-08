@@ -45,5 +45,5 @@ def task_12_01():
 
     plt.show()
 
-
+print('  ', end='')
 # task_12_01()
